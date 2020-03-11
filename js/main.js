@@ -9,7 +9,7 @@ const cid = 141784087094952; //numeric str require
 const csid = 'ba2cb2daefe423edf39ff89248e40f82'; //str require
 const grant_type ='authorization_code';
 const redirect_url = 'https://adamian17.github.io/adonisInstaFeed/';//numeric str require
-const code = 'AQAQJvk1hodaiZP6cGy0-ClgYkQDOg4WkL4iZCnag8p9S2neU1Gm3Wq-tuB6RqZlUx2LRnO3QG0ab2YhNUbHcI8epdjCW_VxDSBa3QXxWcapnWAmVUIo7edD__NOEUhs8r8eNZ-UpDG7q-7yPH1LbnTc_SLDcAEm6zHqYqA8Chw0IlMTectiySaInTQfSxnuAc-RaycIFkls-v1Nyaqjkd1jySpLbt3oUc1ALSeODe00nw'; //numeric str require // code only last 1 hour
+const code = 'AQDy0JG-29rg835cZhuRcpg_iqZh-swfBZ224SY60bASc-79qLTX9LWUKpDGqof_GTpZk0O0ms4vhO22PZVvcw39wzymd__6DQqLxUVM6E4j20GAQuHDjmCC_GvKTvcRBjErZykq4Th7H7BIClTk4H89narDqmUJHQR5OTYLe5dXZl4sH1uoHzgslB4RPjpmX2xD3yRmvYNNY5Ro6-vhVqO1kU0ozKjRSpRUCSI63a5NWQ'; //numeric str require // code only last 1 hour
 
 //#######################################################################################################//
 
@@ -35,7 +35,7 @@ const dataFeed = () => {
       headers: {
         'Content-type': 'application/x-www-form-urlencoded'
       },
-      body: JSON.stringify(myHeaders), 
+      body: JSON.stringify(myHeaders),
     }).then((res) => { return res.json() }).then((data) => {
       console.log(`Succes: ${data}`)
     }).catch((err) => console.log(`Error: ${err}`));
