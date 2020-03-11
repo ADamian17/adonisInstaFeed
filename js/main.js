@@ -27,8 +27,8 @@ const myHeaders = {
 
 const dataFeed = () => {
 
-  const access_token = '';
-  const user_id = '';
+  // const access_token = '';
+  // const user_id = '';
 
   fetch('https://api.instagram.com/oauth/access_token', {
       method: 'POST',
@@ -36,7 +36,7 @@ const dataFeed = () => {
         'Content-type': 'application/x-www-form-urlencoded'
       },
       body: JSON.stringify(myHeaders),
-    }).then((res) => { return res.json() }).then((data) => {
+    }).then((res) => console.log(res)).then((data) => {
       console.log(`Succes: ${data}`)
     }).catch((err) => console.log(`Error: ${err}`));
 
@@ -44,7 +44,7 @@ const dataFeed = () => {
 
 dataFeed();
 
-// NOTE  Query Call
+// // NOTE  Query Call
 // fetch(`https://graph.instagram.com/${user_id}/media?fields=id,media_type,media_url,username,timestamp&access_token=${access_token}`)
 // .then((res) => {
 //   return res.json()
