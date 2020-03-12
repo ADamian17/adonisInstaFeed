@@ -4,48 +4,40 @@ const urlCode = 'https://api.instagram.com/oauth/authorize?client_id=14178408709
 // ########################################################################//
 
 // This info needs to be in a .evn file 
-
-const cid = 141784087094952; //numeric str require
-const csid = 'ba2cb2daefe423edf39ff89248e40f82'; //str require
-const grant_type ='authorization_code';
-const redirect_url = 'https://adamian17.github.io/adonisInstaFeed/';//numeric str require
-const code = 'AQDy0JG-29rg835cZhuRcpg_iqZh-swfBZ224SY60bASc-79qLTX9LWUKpDGqof_GTpZk0O0ms4vhO22PZVvcw39wzymd__6DQqLxUVM6E4j20GAQuHDjmCC_GvKTvcRBjErZykq4Th7H7BIClTk4H89narDqmUJHQR5OTYLe5dXZl4sH1uoHzgslB4RPjpmX2xD3yRmvYNNY5Ro6-vhVqO1kU0ozKjRSpRUCSI63a5NWQ'; //numeric str require // code only last 1 hour
+const code = 'AQCOdbLWAm2qRfqrY2KPYXYQ3WmmcFmWsyBPFiIVDSlJsj09zIabkmhw7HaszT_LsNUVPkORkjqKktGDAlCrAOUN72A31Enk9XhKPd3ASe3dk3eTFQ55JzYuKvJBtJYsBVbGwO0aC0CrDEuXbrBvcBeEtZlQBVy-wD4irMF6hSp9NreTYw08PSQga_Wkq-qOjuqsL9JGD0gVkQbr0E-5c_5KwJkCS9zKkwCQBPv7tP15Eg'; //numeric str require // code only last 1 hour
 
 //#######################################################################################################//
 
 // NOTE 
-// ANCHOR  res example 
+// ANCHOR  Responce example 
 // {"access_token": "...", "user_id": 17841401054327653}
+
 // NOTE Body Header
-const myHeaders = {
-  client_id: cid,
-  client_secret: csid,
-  grant_type: grant_type,
-  redirect_uri: redirect_url,
-  code: code
-}
 
-const dataFeed = () => {
+const formData = new FormData()
+formData.append('client_id', 141784087094952)
+formData.append('client_secret', 'ba2cb2daefe423edf39ff89248e40f82')
+formData.append('grant_type', 'authorization_code')
+formData.append('redirect_uri', 'https://adamian17.github.io/adonisInstaFeed/')
+formData.append('code', code)
 
-  // const access_token = '';
-  // const user_id = '';
+async function postData ( url ) {
 
-  fetch('https://api.instagram.com/oauth/access_token', {
+  const res = await fetch( url, {
       method: 'POST',
-      headers: {
-        'Content-type': 'application/x-www-form-urlencoded'
-      },
-      body: JSON.stringify(myHeaders),
-    }).then((res) => console.log(res)).then((data) => {
-      console.log(`Succes: ${data}`)
-    }).catch((err) => console.log(`Error: ${err}`));
-
+      body: formData
+    });
+    return await res.json() 
 }
 
-dataFeed();
+postData('https://api.instagram.com/oauth/access_token' )
+.then((res) => console.log(res)).catch((err) => console.log(`Error: ${err}`));
 
-// // NOTE  Query Call
-// fetch(`https://graph.instagram.com/${user_id}/media?fields=id,media_type,media_url,username,timestamp&access_token=${access_token}`)
+// const access_token = '';
+// const user_id = ;
+
+// NOTE  Query Call
+// fetch(`https://graph.instagram.com/17841401054327653/media?fields=id,media_type,media_url,username,timestamp&access_token=IGQVJWNlJSVWo0ZAHI0SnY4ZAGVoOUotVk9NaHU2SURINWRjSG9uSVo5ZA21Wa2tfTHh1NFN3ang4T3ltOExmWG14YS1Ebnc3VUhBcmEtMjAyQ1hab2ZAEclRrSmNSNWdiU1g4cVllUkVteWNkdmZA3c25qWUFtZAXktNzFBN2lF`)
 // .then((res) => {
 //   return res.json()
 // }).then((data) => {
